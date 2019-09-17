@@ -4,6 +4,7 @@ namespace DigipolisGent\Tests\Robo\Task\Package;
 
 use League\Container\ContainerAwareInterface;
 use League\Container\ContainerAwareTrait;
+use PHPUnit\Framework\TestCase;
 use Robo\Common\CommandArguments;
 use Robo\Contract\ConfigAwareInterface;
 use Robo\Robo;
@@ -11,7 +12,7 @@ use Robo\TaskAccessor;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Finder\Finder;
 
-class PackageProjectTest extends \PHPUnit_Framework_TestCase implements ContainerAwareInterface, ConfigAwareInterface
+class PackageProjectTest extends TestCase implements ContainerAwareInterface, ConfigAwareInterface
 {
 
     use \DigipolisGent\Robo\Task\Package\loadTasks;

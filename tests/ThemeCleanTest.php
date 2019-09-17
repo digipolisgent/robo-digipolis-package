@@ -4,13 +4,16 @@ namespace DigipolisGent\Tests\Robo\Task\Package;
 
 use League\Container\ContainerAwareInterface;
 use League\Container\ContainerAwareTrait;
-use Robo\Contract\ConfigAwareInterface;
+use PHPUnit\Framework\Constraint\IsTrue;
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Util\InvalidArgumentHelper;
 use Robo\Common\CommandArguments;
+use Robo\Contract\ConfigAwareInterface;
 use Robo\Robo;
 use Robo\TaskAccessor;
 use Symfony\Component\Console\Output\NullOutput;
 
-class ThemeCleanTest extends \PHPUnit_Framework_TestCase implements ContainerAwareInterface, ConfigAwareInterface
+class ThemeCleanTest extends TestCase implements ContainerAwareInterface, ConfigAwareInterface
 {
 
     use \DigipolisGent\Robo\Task\Package\loadTasks;
@@ -19,6 +22,7 @@ class ThemeCleanTest extends \PHPUnit_Framework_TestCase implements ContainerAwa
     use CommandArguments;
     use \Robo\Task\Base\loadTasks;
     use \Robo\Common\ConfigAwareTrait;
+    use \DigipolisGent\Robo\Task\Package\Utility\NpmFindExecutable;
 
     /**
      * Set up the Robo container so that we can create tasks in our tests.
@@ -86,10 +90,10 @@ class ThemeCleanTest extends \PHPUnit_Framework_TestCase implements ContainerAwa
     public static function assertDirectoryIsEmpty($directory, $message = '')
     {
         if (!is_string($directory)) {
-            throw \PHPUnit_Util_InvalidArgumentHelper::factory(1, 'string');
+            throw InvalidArgumentHelper::factory(1, 'string');
         }
 
-        $constraint = new \PHPUnit_Framework_Constraint_IsTrue();
+        $constraint = new IsTrue();
         if (!is_readable($directory)) {
             static::assertThat(false, $constraint, $message);
             return;
