@@ -5,8 +5,7 @@
     "minimum-stability": "RC",
     "prefer-stable": true,
     "require": {
-        "consolidation/robo": "~1.0",
-        "php": ">=7.0",
+        "consolidation/robo": "^1.0|^2.0",
         "pear/archive_tar": "^1.4.5",
         "symfony/debug": "^4|^3.4"
     },
